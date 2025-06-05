@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NOTICE BOARD v1.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      min-width: 100vw;
+      background: linear-gradient(135deg, #e3f6fd 0%, #fff 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      align-items: stretch;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      position: relative;
+    }
+    .main-content {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 0;
+      min-width: 0;
+      padding-bottom: 70px; /* Space for ticker */
+      box-sizing: border-box;
+    }
+    .title {
+      text-align: center;
+      font-size: 3.2vw;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 3vw;
+      color: #1d72b8;
+      text-shadow: 0 2px 12px #e0e8ef;
+      text-transform: uppercase;
+      width: 100vw;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2.5vw;
+      width: 80vw;
+      max-width: 1200px;
+      max-height: 60vh;
+      height: 40vw;
+      min-height: 240px;
+    }
+    .card {
+      background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+      border-radius: 1.2vw;
+      box-shadow: 0 2px 16px rgba(29,114,184,0.10);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.1s;
+      padding: 2vw 1vw;
+      min-width: 0;
+      min-height: 0;
+    }
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 32px rgba(29,114,184,0.18);
+    }
+    .label {
+      font-size: 1.6vw;
+      color: #1565c0;
+      margin-bottom: 0.7vw;
+      font-weight: 500;
+      text-align: center;
+      width: 100%;
+      word-break: break-word;
+    }
+    .amount {
+      font-size: 3.8vw;
+      font-weight: bold;
+      color: #0078d7;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 10px #b2ebf2;
+      text-align: center;
+      width: 100%;
+      display: block;
+    }
+    /* Ticker styles */
+    .ticker-wrapper {
+      width: 100vw;
+      overflow: hidden;
+      background: #0078d7;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+    }
+    .ticker {
+      display: inline-block;
+      white-space: nowrap;
+      color: #fff;
+      font-size: 1.5em;
+      font-weight: 600;
+      padding-left: 100vw;
+      animation: ticker 18s linear infinite;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 8px #005fa3;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    @media (max-width: 900px) {
+      .grid {
+        width: 96vw;
+        height: 60vw;
+        gap: 4vw;
+      }
+      .title {
+        font-size: 6vw;
+      }
+      .label {
+        font-size: 3vw;
+      }
+      .amount {
+        font-size: 7vw;
+      }
+    }
+    @media (max-width: 600px) {
+      .main-content {
+        padding-bottom: 60px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        width: 98vw;
+        height: 80vw;
+        gap: 4vw;
+      }
+      .card {
+        padding: 4vw 2vw;
+      }
+      .title {
+        font-size: 8vw;
+      }
+      .label {
+        font-size: 4vw;
+      }
+      .amount {
+        font-size: 10vw;
+      }
+      .ticker {
+        font-size: 1.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-content">
+    <div class="title">NOTICE BOARD v1.0</div>
+    <div class="grid">
+      <div class="card">
+        <span class="label">Total Sliced with Labels</span>
+        <span class="amount">2000</span>
+      </div>
+      <div class="card">
+        <span class="label">Total Sliced without Labels</span>
+        <span class="amount">200</span>
+      </div>
+      <div class="card">
+        <span class="label">Total Unsliced with Labels</span>
+        <span class="amount">599</span>
+      </div>
+      <div class="card">
+        <span class="label">Total Unsliced without Labels</span>
+        <span class="amount">400</span>
+      </div>
+    </div>
+  </div>
+  <!-- Ticker Tape -->
+  <div class="ticker-wrapper">
+    <div class="ticker" id="ticker-message">
+      🚨 Please remember to update your shift logs by 5pm! | Welcome to the new staff notice board! | Safety meeting at 11:30am in the main hall. 🚨
+    </div>
+  </div>
+</body>
+</html>
