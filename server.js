@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -13,6 +12,14 @@ app.get('/', (req, res) => {
 // Admin editor (WYSIWYG)
 app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'editor.html'));
+});
+
+app.use(express.static(__dirname));
+
+
+// Serve message.html for fetch in editor
+app.get('/message.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'message.html'));
 });
 
 // Save edited HTML
